@@ -32,6 +32,42 @@ public class CalculatorTest {
     }
 
     @Test
+    public void testMultiplyUsingRepository() {
+        // Given
+        int[] operands = { 4, 2 };
+        when(calculatorRepository.getOperands()).thenReturn(operands);
+        // When
+        int result = calculator.multiplyUsingRepository(calculatorRepository);
+        // Then
+        assertTrue(result == 8);
+        verify(calculatorRepository, times(1)).getOperands();
+    }
+
+    @Test
+    public void testSubstractUsingRepository() {
+        // Given
+        int[] operands = { 10, 2 };
+        when(calculatorRepository.getOperands()).thenReturn(operands);
+        // When
+        int result = calculator.substractUsingRepository(calculatorRepository);
+        // Then
+        assertTrue(result == 8);
+        verify(calculatorRepository, times(1)).getOperands();
+    }
+
+    @Test
+    public void testDividebyUsingRepository() {
+        // Given
+        int[] operands = { 14, 2 };
+        when(calculatorRepository.getOperands()).thenReturn(operands);
+        // When
+        int result = calculator.divideByusingRepository(calculatorRepository);
+        // Then
+        assertTrue(result == 7);
+        verify(calculatorRepository, times(1)).getOperands();
+    }
+
+    @Test
     public void testAdd() {
         // Given
         int a = 1;
