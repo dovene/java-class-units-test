@@ -3,6 +3,7 @@ package tests_lesson;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import tests_lesson.stringhandler.StringHandler;
@@ -10,21 +11,41 @@ import tests_lesson.stringhandler.StringHandlerImpl;
 
 public class StringHandlerImplTest {
 
-    private final StringHandler handler = new StringHandlerImpl();
+    private StringHandler handler;
+    // setup
+    @BeforeEach
+    public void setup() {
+        handler = new StringHandlerImpl();
+    }
 
     @Test
     public void testIsNullOrEmpty_WithNull() {
-        assertTrue(handler.isNullOrEmpty(null));
+        //Given
+        String input = null;
+        //When
+        handler.isNullOrEmpty(input);
+        //Then
+        assertTrue(handler.isNullOrEmpty(input));
     }
 
     @Test
     public void testIsNullOrEmpty_WithEmptyString() {
-        assertTrue(handler.isNullOrEmpty(""));
+        //Given
+        String input = "";
+        //When
+        handler.isNullOrEmpty(input);
+        //Then
+        assertTrue(handler.isNullOrEmpty(input));
     }
 
     @Test
     public void testCountOccurrences_WithOccurrences() {
-        assertEquals(3, handler.countOccurrences("banana", 'a'));
+        //Given
+        String input = "banana";
+        //When
+        handler.countOccurrences(input, 'a');
+        //Then
+        assertEquals(3, handler.countOccurrences(input, 'a'));
     }
 
     @Test
